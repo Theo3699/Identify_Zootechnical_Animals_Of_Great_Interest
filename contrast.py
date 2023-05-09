@@ -1,6 +1,7 @@
 import cv2
 
 def enhance_contrast(file_path, input):
+    print('Contrasting...')
     img = cv2.imread(file_path + input + '.jpg')
 
     img_yuv = cv2.cvtColor(img, cv2.COLOR_BGR2YUV)
@@ -10,9 +11,6 @@ def enhance_contrast(file_path, input):
 
     # convert the YUV image back to RGB format
     img_output = cv2.cvtColor(img_yuv, cv2.COLOR_YUV2BGR)
-
-    # convert the BGR image to gray
-    img_output = cv2.cvtColor(img_output, cv2.COLOR_BGR2GRAY)
 
     output = input + '_contrast'
 

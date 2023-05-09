@@ -2,9 +2,10 @@ import cv2
 import numpy as np
 
 def align(input, reference):
+    print('Aligning reference photo with input photo...')
     # Load the images
-    img1 = cv2.imread('intermediary\\' + input +'.jpg')
-    img2 = cv2.imread('intermediary\\' + reference +'.jpg') # reference
+    img1 = cv2.imread('input\\' + input +'.jpg')
+    img2 = cv2.imread('input\\' + reference +'.jpg') # reference
 
     # Convert the images to grayscale
     gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)

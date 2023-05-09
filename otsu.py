@@ -1,6 +1,7 @@
 import cv2
 
 def binarize(input):
+    print('Binarizing image...')
     # Read the input image in grayscale
     img = cv2.imread('intermediary\\' + input + '.jpg', 0)
 

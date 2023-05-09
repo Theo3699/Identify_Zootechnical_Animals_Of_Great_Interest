@@ -3,7 +3,7 @@ import numpy as np
 
 def draw_contour(input):
     # Read the input image in grayscale
-    img = cv2.imread('images\\' + input + '.png', 0)
+    img = cv2.imread('intermediary\\' + input + '.jpg')
 
     # Define a structuring element for the morphological operation
     kernel = np.ones((5,5), np.uint8)
@@ -21,5 +21,7 @@ def draw_contour(input):
     output = input + '_contoured'
 
     # Display the resulting image
-    cv2.imwrite('images\\' + output + '.jpg', contour_img)
+    cv2.imwrite('intermediary\\' + output + '.jpg', contour_img)
     return output
+
+draw_contour('cattle_0500_DSCF3909_cropped')

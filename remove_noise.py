@@ -1,6 +1,7 @@
 import cv2
 
 def remove_noise(input):
+    print('Removing noise...')
     # Load the image
     img = cv2.imread('intermediary\\' + input + '.jpg', 0)
 

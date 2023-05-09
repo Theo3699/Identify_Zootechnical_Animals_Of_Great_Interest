@@ -1,6 +1,7 @@
 import cv2
 
 def thin(input):
+    print('Thinning...')
     # Load the binary image
     img = cv2.imread('intermediary\\' + input + '.jpg', cv2.IMREAD_GRAYSCALE)
 

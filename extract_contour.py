@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 
 def emphasize_contour(input):
+    print('Extracting the contour of the relevant components...')
     # Load the image
     img = cv2.imread('intermediary\\' + input + '.jpg')
 

@@ -23,6 +23,7 @@ def getPixelFromRight(img):
     return farthest
 
 def crop(input):
+    print('Cropping...')
     # Load the image
     img = cv2.imread('intermediary\\' + input + '.jpg')
 

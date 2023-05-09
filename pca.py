@@ -5,6 +5,7 @@ import argparse
 
 
 def get_principal_components(input):
+    print('Extracting principal components...')
     parser = argparse.ArgumentParser(description='Code for Introduction to Principal Component Analysis (PCA) tutorial.\
                                                   This program demonstrates how to use OpenCV PCA to extract the orientation of an object.')
     parser.add_argument('--input', help='Path to input image.', default='pca_test1.jpg')
