@@ -35,8 +35,8 @@ def ransac_filter(matches, keypoints1, keypoints2):
 
 print('Aligning reference photo with input photo...')
 # Load the images
-img1 = cv2.imread("intermediary\\cattle_0500_DSCF3908_aligned_edges_nonoise_blurred_otsu.jpg")
-img2 = cv2.imread("intermediary\\cattle_0500_DSCF3909_edges_nonoise_blurred_otsu.jpg") # reference
+img1 = cv2.imread("intermediary_results\\Filter_merged2_edges_nonoise_blurred.jpg")
+img2 = cv2.imread("intermediary_results\\Filter_merged_edges_nonoise_blurred.jpg") # reference
 
 # Preprocess the images
 gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
@@ -65,7 +65,7 @@ for m, n in matches:
 filtered_matches = ransac_filter(good_matches, kp1, kp2)
 result = cv2.drawMatches(img1, kp1, img2, kp2, filtered_matches, None)
 
-# cv2.imwrite('Matches_ransac.jpg', result)
+# cv2.imwrite('Matches_ransac_2.jpg', result)
 
 
 # Compute the similarity score based on the number of good matches

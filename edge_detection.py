@@ -3,7 +3,7 @@ import cv2
 def enhance_edges(input):
     print('Enhancing edges...')
     # Read the original image
-    img = cv2.imread('input\\' + input + '.jpg')
+    img = cv2.imread('' + input + '.jpg')
 
     # Convert to graycsale
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -22,5 +22,5 @@ def enhance_edges(input):
     output = input + '_edges'
 
     # Display Sobel Edge Detection Images
-    cv2.imwrite('intermediary\\' + output + '.jpg', sobelx)
+    cv2.imwrite('intermediary_results\\' + output + '.jpg', sobelx)
     return output

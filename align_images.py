@@ -4,8 +4,8 @@ import numpy as np
 def align(input, reference):
     print('Aligning reference photo with input photo...')
     # Load the images
-    img1 = cv2.imread('input\\' + input +'.jpg')
-    img2 = cv2.imread('input\\' + reference +'.jpg') # reference
+    img1 = cv2.imread('input_results\\' + input +'.jpg')
+    img2 = cv2.imread('input_results\\' + reference +'.jpg') # reference
 
     # Convert the images to grayscale
     gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
@@ -46,5 +46,5 @@ def align(input, reference):
 
     output = input + '_aligned'
     # Display the aligned images
-    cv2.imwrite('intermediary\\' + output + '.jpg', aligned_img1)
+    cv2.imwrite('intermediary_results\\' + output + '.jpg', aligned_img1)
     return output

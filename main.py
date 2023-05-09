@@ -15,11 +15,11 @@ if __name__ == '__main__':
     # contrast
     # processed_image = enhance_contrast('input\\', 'cattle_0500_DSCF3909')
     # same_POV
-    # processed_image = align('cattle_0500_DSCF3908', 'cattle_0500_DSCF3909') # second parameter is reference
+    # processed_image = align('cattle_0600_DSCF3917', 'cattle_0600_DSCF3914') # second parameter is reference
     # # remove_nostrils
     # processed_image = crop(processed_image)
     # sobel
-    processed_image = enhance_edges('cattle_1400_DSCF4014')
+    processed_image = enhance_edges('Filter_merged2')
     # # contrast
     # processed_image = enhance_contrast('intermediary\\', processed_image)
     # # nonoise
