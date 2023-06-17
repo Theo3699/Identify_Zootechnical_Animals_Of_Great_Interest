@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload QR code</title>
+</head>
+<body>
+    <h1>Upload QR code</h1>
+    <form action="/upload_qr" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <input type="submit" value="Upload">
+    </form>
+    {% if image_filename %}
+    <h2>Uploaded Image:</h2>
+    <img src="{{ url_for('uploaded_image', filename=image_filename) }}" alt="Uploaded Image">
+    {% endif %}
+</body>
+</html>

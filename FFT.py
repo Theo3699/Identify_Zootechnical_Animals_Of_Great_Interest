@@ -18,3 +18,5 @@ cv2.imshow('Input Image', img)
 cv2.imshow('Magnitude Spectrum', magnitude_spectrum.astype(np.uint8))
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+# malformed output

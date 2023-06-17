@@ -33,10 +33,9 @@ def ransac_filter(matches, keypoints1, keypoints2):
     return filtered_matches
 
 
-print('Aligning reference photo with input photo...')
 # Load the images
-img1 = cv2.imread("intermediary_results\\Filter_merged2_edges_nonoise_blurred.jpg")
-img2 = cv2.imread("intermediary_results\\Filter_merged_edges_nonoise_blurred.jpg") # reference
+img1 = cv2.imread("output_results\\cattle_0600_DSCF3914_edges_nonoise_blurred_otsu.jpg")
+img2 = cv2.imread("output_results\\cattle_0600_DSCF3917_aligned_edges_nonoise_blurred_otsu.jpg") # reference
 
 # Preprocess the images
 gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
@@ -65,24 +64,9 @@ for m, n in matches:
 filtered_matches = ransac_filter(good_matches, kp1, kp2)
 result = cv2.drawMatches(img1, kp1, img2, kp2, filtered_matches, None)
 
-# cv2.imwrite('Matches_ransac_2.jpg', result)
-
+cv2.imwrite('Matches_ransac_3.jpg', result)
 
 # Compute the similarity score based on the number of good matches
 score = len(filtered_matches) / float(len(good_matches))
-
-# Print the similarity score
-print('Similarity score:', score, '%')
-
-
-# Compute the similarity score based on the average distance between the matched keypoints
-total_distance = 0.0
-for match in filtered_matches:
-    pt1 = kp1[match.queryIdx].pt
-    pt2 = kp2[match.trainIdx].pt
-    total_distance += np.sqrt((pt1[0] - pt2[0]) ** 2 + (pt1[1] - pt2[1]) ** 2)
-avg_distance = total_distance / len(filtered_matches)
-similarity_score = 1.0 / avg_distance if avg_distance > 0 else 0.0
-print("Similarity score based on the average distance between the matched keypoints:", similarity_score)
 
 print('Matches:', len(filtered_matches))
