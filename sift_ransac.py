@@ -32,41 +32,40 @@ def ransac_filter(matches, keypoints1, keypoints2):
 
     return filtered_matches
 
+def calculate_similarity():
+    # Load the images
+    img1 = cv2.imread('C:\\Users\\Theo\\PycharmProjects\\pythonProject\\demo\\api\\final\\input_aligned_edges_nonoise_blurred_otsu.jpg')
+    img2 = cv2.imread('C:\\Users\\Theo\\PycharmProjects\\pythonProject\\demo\\api\\mock_database\\cattle_0100_DSCF3865_edges_nonoise_blurred_otsu.jpg') # reference
 
-# Load the images
-img1 = cv2.imread("output_results\\cattle_0600_DSCF3914_edges_nonoise_blurred_otsu.jpg")
-img2 = cv2.imread("output_results\\cattle_0600_DSCF3917_aligned_edges_nonoise_blurred_otsu.jpg") # reference
+    # Preprocess the images
+    gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+    gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
 
-# Preprocess the images
-gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+    # Initialize the SIFT feature detector and descriptor extractor
+    sift = cv2.xfeatures2d.SIFT_create()
 
-# Initialize the SIFT feature detector and descriptor extractor
-sift = cv2.xfeatures2d.SIFT_create()
+    # Detect keypoints and compute descriptors for each image
+    kp1, des1 = sift.detectAndCompute(gray1, None)
+    kp2, des2 = sift.detectAndCompute(gray2, None)
 
-# Detect keypoints and compute descriptors for each image
-kp1, des1 = sift.detectAndCompute(gray1, None)
-kp2, des2 = sift.detectAndCompute(gray2, None)
+    # Initialize the feature matcher
+    bf = cv2.BFMatcher()
 
-# Initialize the feature matcher
-bf = cv2.BFMatcher()
+    # Match descriptors between the two images
+    matches = bf.knnMatch(des1, des2, k=2)
 
-# Match descriptors between the two images
-matches = bf.knnMatch(des1, des2, k=2)
-
-# Apply ratio test to remove ambiguous matches
-good_matches = []
-for m, n in matches:
-    if m.distance < 0.7 * n.distance:
-        good_matches.append(m)
+    # Apply ratio test to remove ambiguous matches
+    good_matches = []
+    for m, n in matches:
+        if m.distance < 0.7 * n.distance:
+            good_matches.append(m)
 
 
-filtered_matches = ransac_filter(good_matches, kp1, kp2)
-result = cv2.drawMatches(img1, kp1, img2, kp2, filtered_matches, None)
+    filtered_matches = ransac_filter(good_matches, kp1, kp2)
+    result = cv2.drawMatches(img1, kp1, img2, kp2, filtered_matches, None)
 
-cv2.imwrite('Matches_ransac_3.jpg', result)
+    result_path = 'C:\\Users\\Theo\\PycharmProjects\\pythonProject\\demo\\api\\result\\similarity.jpg'
+    cv2.imwrite(result_path, result)
 
-# Compute the similarity score based on the number of good matches
-score = len(filtered_matches) / float(len(good_matches))
-
-print('Matches:', len(filtered_matches))
+    print('Most relevant matches:', len(filtered_matches))
+    return result_path

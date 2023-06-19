@@ -6,7 +6,6 @@ img = cv2.imread('images\\test.jpg', 0)
 
 # Apply Otsu's thresholding
 _, thresh = cv2.threshold(img, 165, 255, cv2.THRESH_BINARY)
-cv2.imshow('otsu', thresh)
 
 # Define the parameters for the Gabor filter
 ksize = 5

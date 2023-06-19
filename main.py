@@ -1,5 +1,5 @@
 from blur import add_blurr
-from connect import connect_features
+# from connect import connect_features
 from contrast import enhance_contrast
 from edge_detection import enhance_edges
 from extract_contour import emphasize_contour
@@ -11,25 +11,25 @@ from align_images import align
 from nostrils import crop
 
 
-if __name__ == '__main__':
+def process_input(reference):
     # contrast
     # processed_image = enhance_contrast('input\\', 'cattle_0500_DSCF3909')
     # same_POV
-    # processed_image = align('cattle_0600_DSCF3917', 'cattle_0600_DSCF3914') # second parameter is reference
+    align(reference) # second parameter is reference
     # # remove_nostrils
     # processed_image = crop(processed_image)
     # sobel
-    processed_image = enhance_edges('Filter_merged2')
+    enhance_edges()
     # # contrast
     # processed_image = enhance_contrast('intermediary\\', processed_image)
     # # nonoise
-    processed_image = remove_noise(processed_image)
+    remove_noise()
     # blurr
-    processed_image = add_blurr(processed_image)
+    add_blurr()
     # contrast
     # processed_image = enhance_contrast('intermediary\\', processed_image)
     # otsu
-    processed_image = binarize(processed_image)
+    binarize()
     # connect
     # processed_image = connect_features(processed_image)
     # # pca

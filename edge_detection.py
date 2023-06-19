@@ -1,9 +1,9 @@
 import cv2
 
-def enhance_edges(input):
+def enhance_edges():
     print('Enhancing edges...')
     # Read the original image
-    img = cv2.imread('' + input + '.jpg')
+    img = cv2.imread('C:\\Users\\Theo\\PycharmProjects\\pythonProject\\demo\\api\\intermediary\\input_aligned.jpg')
 
     # Convert to graycsale
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -19,8 +19,7 @@ def enhance_edges(input):
     #
     # sobel = cv2.addWeighted(sobelx, 0.5, sobely, 0.5, 0)
 
-    output = input + '_edges'
-
+    output = 'C:\\Users\\Theo\\PycharmProjects\\pythonProject\\demo\\api\\intermediary\\input_aligned_edges.jpg'
+    #
     # Display Sobel Edge Detection Images
-    cv2.imwrite('intermediary_results\\' + output + '.jpg', sobelx)
-    return output
+    cv2.imwrite(output, sobelx)
