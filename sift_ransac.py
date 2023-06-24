@@ -35,7 +35,7 @@ def ransac_filter(matches, keypoints1, keypoints2):
 def calculate_similarity():
     # Load the images
     img1 = cv2.imread('C:\\Users\\Theo\\PycharmProjects\\pythonProject\\demo\\api\\final\\input_aligned_edges_nonoise_blurred_otsu.jpg')
-    img2 = cv2.imread('C:\\Users\\Theo\\PycharmProjects\\pythonProject\\demo\\api\\mock_database\\cattle_0100_DSCF3865_edges_nonoise_blurred_otsu.jpg') # reference
+    img2 = cv2.imread('C:\\Users\\Theo\\PycharmProjects\\pythonProject\\demo\\api\\mock_database\\cattle_0500_DSCF3909_edges_nonoise_blurred_otsu.jpg') # reference
 
     # Preprocess the images
     gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
